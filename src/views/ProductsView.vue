@@ -1,9 +1,11 @@
 <template>
-  <ProductCard
-    v-for="product in products"
-    :key="product.id"
-    :product="product"
-  />
+  <div class="flex flex-wrap justify-center">
+    <ProductCard
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,20 @@
 <template>
-  <el-card class="box-card w-1/3 inline-block">
+  <el-card class="box-card w-1/3 inline-block p-4 m-2">
     <template #header>
       <div class="card-header flex justify-between">
-        <span class="capitalize font-bold">{{ product.title }}</span>
-        <el-button class="button" text>Order</el-button>
+        <span class="capitalize font-bold">
+          {{ product.title }} |
+          <span class="text-cyan-800">${{ product.price / 100 }}</span>
+        </span>
+        <el-button v-if="orderAction" type="primary" class="button" text
+          >Order</el-button
+        >
       </div>
     </template>
-    <span>{{ product.description }}</span>
+    <div>
+      <p class="block">{{ product.description }}</p>
+      <span class="text-cyan-900"> {{ stockValueString }} </span>
+    </div>
   </el-card>
 </template>
 
@@ -16,6 +24,19 @@ export default {
     product: {
       required: true,
       type: Object,
+    },
+    orderAction: {
+      default: true,
+      type: Boolean,
+    },
+  },
+  computed: {
+    stockValueString() {
+      if (this.product.stock <= 0) {
+        return "Out of stock";
+      }
+
+      return "Available: " + this.product.stock;
     },
   },
 };
