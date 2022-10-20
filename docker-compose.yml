@@ -1,0 +1,8 @@
+version: '1'
+services:
+  vue:
+    build: .
+    image: "scriptics-cc-frontend:latest"
+    container_name: "scriptics-cc-frontend_container"
+    ports:
+      - "8080:8080"
