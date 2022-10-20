@@ -47,10 +47,7 @@ export default {
           .post("/register", this.form)
           .then(() => {
             // fetch authenticated's user data
-            this.$http.get("/api/user").then((res) => {
-              this.$store.commit("setUser", res.data.data);
-              this.$router.push("/");
-            });
+            this.$store.dispatch("fetchUser", this);
           })
           .catch((res) => {
             this.errors = res.response.data.errors;

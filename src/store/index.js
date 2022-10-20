@@ -16,6 +16,12 @@ export default createStore({
       state.user = user;
     },
   },
-  actions: {},
+  actions: {
+    fetchUser(context, app) {
+      app.$http.get("/api/user").then((res) => {
+        context.commit("setUser", res.data.data);
+      });
+    },
+  },
   modules: {},
 });
