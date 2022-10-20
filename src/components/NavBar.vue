@@ -9,9 +9,6 @@
     <router-link to="/">
       <el-menu-item index="0">Products</el-menu-item>
     </router-link>
-    <router-link to="/orders">
-      <el-menu-item index="1">Orders</el-menu-item>
-    </router-link>
 
     <!-- Guest User -->
     <template v-if="!user">
@@ -30,6 +27,10 @@
 
     <!-- Authenticated User -->
     <template v-else>
+      <router-link to="/orders">
+        <el-menu-item index="1">Orders</el-menu-item>
+      </router-link>
+
       <el-sub-menu index="2">
         <template #title>{{ user.name }}</template>
         <el-menu-item index="2-1">Logout</el-menu-item>

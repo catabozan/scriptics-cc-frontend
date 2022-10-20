@@ -6,9 +6,11 @@
           {{ product.title }} |
           <span class="text-cyan-800">${{ product.price / 100 }}</span>
         </span>
-        <el-button v-if="orderAction" type="primary" class="button" text
-          >Order</el-button
-        >
+        <router-link :to="orderRoute">
+          <el-button v-if="orderAction" type="primary" class="button" text
+            >Order</el-button
+          >
+        </router-link>
       </div>
     </template>
     <div>
@@ -37,6 +39,9 @@ export default {
       }
 
       return "Available: " + this.product.stock;
+    },
+    orderRoute() {
+      return "/products/" + this.product.id + "/order";
     },
   },
 };
