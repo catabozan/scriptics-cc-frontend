@@ -33,7 +33,7 @@
 
       <el-sub-menu index="2">
         <template #title>{{ user.name }}</template>
-        <el-menu-item index="2-1">Logout</el-menu-item>
+        <el-menu-item index="2-1" @click="logout">Logout</el-menu-item>
       </el-sub-menu>
     </template>
   </el-menu>
@@ -44,6 +44,13 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["user"]),
+  },
+  methods: {
+    logout() {
+      this.$http.post("/logout").then(() => {
+        this.$store.commit("setUser", undefined);
+      });
+    },
   },
 };
 </script>

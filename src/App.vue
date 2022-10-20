@@ -10,6 +10,13 @@ export default {
   components: {
     NavBar,
   },
+  created() {
+    // fetch authenticated's user data
+    this.$http.get("/api/user").then((res) => {
+      this.$store.commit("setUser", res.data.data);
+      this.$router.push("/");
+    });
+  },
 };
 </script>
 
