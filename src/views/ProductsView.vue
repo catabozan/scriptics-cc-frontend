@@ -17,8 +17,7 @@ export default {
     ProductCard,
   },
   created() {
-    this.$http.get("/products").then((res) => {
-      console.log(res);
+    this.$http.get("api/products").then((res) => {
       this.products = res.data.data;
       this.pagination = res.data.links;
     });

@@ -13,27 +13,25 @@
       </button>
     </form>
     <h2 class="text-lg font-bold">{{ orderMessage }}</h2>
-    <ol v-if="errors">
-      <li v-for="(fieldErrors, index) in errors" :key="index">
-        <ol class="list-disc">
-          <li v-for="error in fieldErrors" :key="error">{{ error }}</li>
-        </ol>
-      </li>
-    </ol>
+    <ErrorList :errors="errors" />
   </div>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
+import ErrorList from "@/components/ErrorList.vue";
 
 export default {
   components: {
     ProductCard,
+    ErrorList,
   },
   created() {
-    this.$http.get("/products/" + this.$route.params.productId).then((res) => {
-      this.product = res.data.data;
-    });
+    this.$http
+      .get("api/products/" + this.$route.params.productId)
+      .then((res) => {
+        this.product = res.data.data;
+      });
   },
   data() {
     return {
@@ -42,7 +40,7 @@ export default {
         address: "",
         phone_number: "",
       },
-      errors: [],
+      errors: {},
       orderMessage: "",
       orderPlaced: false,
     };
@@ -50,18 +48,15 @@ export default {
   methods: {
     placeOrder() {
       this.$http
-        .post("/orders/" + this.$route.params.productId, this.form)
+        .post("api/orders/" + this.$route.params.productId, this.form)
         .then((res) => {
-          console.log(res);
-          this.errors = [];
+          this.errors = {};
           this.orderMessage =
             "Order placed successfully (order #" + res.data.data.id + ")";
           this.orderPlaced = true;
         })
         .catch((err) => {
-          console.log(err);
-          this.errors = err.response.data.errors;
-          this.orderMessage = "The information is invalid";
+          this.errors = err.response.data.errors ?? {};
         });
     },
   },

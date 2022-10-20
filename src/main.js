@@ -10,7 +10,7 @@ import "./index.css";
 import "element-plus/dist/index.css";
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost/api";
+axios.defaults.baseURL = "http://localhost";
 
 createApp(App)
   .use(store)
