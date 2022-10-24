@@ -9,6 +9,7 @@
       v-for="product in products"
       :key="product.id"
       :product="product"
+      @deleted="removeProduct(product.id)"
     />
   </div>
 </template>
@@ -36,6 +37,12 @@ export default {
   },
   computed: {
     ...mapGetters(["user"]),
+  },
+  methods: {
+    removeProduct(id) {
+      console.log("deleted: " + id);
+      this.products = this.products.filter((product) => product.id !== id);
+    },
   },
 };
 </script>

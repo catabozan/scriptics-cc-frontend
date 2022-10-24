@@ -36,6 +36,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+  emits: ["deleted"],
   props: {
     product: {
       required: true,
@@ -64,8 +65,9 @@ export default {
   },
   methods: {
     deleteProduct() {
-      this.$http.delete("api/products/" + this.product.id).then(() => {
-        this.$router.go(); // refresh
+      const that = this;
+      this.$http.delete("api/products/" + this.product.id).then(function () {
+        that.$emit("deleted");
       });
     },
   },
