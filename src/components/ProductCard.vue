@@ -7,9 +7,14 @@
           <span class="text-cyan-800">${{ product.price / 100 }}</span>
         </span>
         <template v-if="user.admin">
-          <router-link :to="editRoute">
-            <el-button type="primary" class="button" text>Edit</el-button>
-          </router-link>
+          <div>
+            <el-button @click="deleteProduct" type="danger" class="button" text
+              >Delete</el-button
+            >
+            <router-link :to="editRoute">
+              <el-button type="primary" class="button" text>Edit</el-button>
+            </router-link>
+          </div>
         </template>
         <template v-else>
           <router-link :to="orderRoute">
@@ -55,6 +60,13 @@ export default {
     },
     editRoute() {
       return "products/" + this.product.id;
+    },
+  },
+  methods: {
+    deleteProduct() {
+      this.$http.delete("api/products/" + this.product.id).then(() => {
+        this.$router.go(); // refresh
+      });
     },
   },
 };
