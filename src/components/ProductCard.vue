@@ -6,7 +6,7 @@
           {{ product.title }} |
           <span class="text-cyan-800">${{ product.price / 100 }}</span>
         </span>
-        <template v-if="user.admin">
+        <template v-if="user?.admin">
           <div>
             <el-button @click="deleteProduct" type="danger" class="button" text
               >Delete</el-button

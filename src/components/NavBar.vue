@@ -4,7 +4,6 @@
     class="el-menu-demo"
     mode="horizontal"
     :ellipsis="false"
-    @select="handleSelect"
   >
     <router-link to="/">
       <el-menu-item index="0">Products</el-menu-item>
@@ -42,6 +41,11 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      activeIndex: "0",
+    };
+  },
   computed: {
     ...mapGetters(["user"]),
   },

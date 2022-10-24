@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user.admin" class="flex justify-center my-8">
+  <div v-if="user?.admin" class="flex justify-center my-8">
     <router-link to="products/new">
       <el-button type="primary">+ Add New Product</el-button>
     </router-link>
