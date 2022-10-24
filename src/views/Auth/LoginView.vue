@@ -40,6 +40,7 @@ export default {
           .then(() => {
             // fetch authenticated's user data
             this.$store.dispatch("fetchUser", this);
+            this.$router.push("/");
           })
           .catch((res) => {
             this.errors = res.response.data.errors;
