@@ -6,11 +6,18 @@
           {{ product.title }} |
           <span class="text-cyan-800">${{ product.price / 100 }}</span>
         </span>
-        <router-link :to="orderRoute">
-          <el-button v-if="orderAction" type="primary" class="button" text
-            >Order</el-button
-          >
-        </router-link>
+        <template v-if="user.admin">
+          <router-link :to="editRoute">
+            <el-button type="primary" class="button" text>Edit</el-button>
+          </router-link>
+        </template>
+        <template v-else>
+          <router-link :to="orderRoute">
+            <el-button v-if="orderAction" type="primary" class="button" text
+              >Order</el-button
+            >
+          </router-link>
+        </template>
       </div>
     </template>
     <div>
@@ -21,6 +28,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: {
     product: {
@@ -33,6 +42,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["user"]),
     stockValueString() {
       if (this.product.stock <= 0) {
         return "Out of stock";
@@ -42,6 +52,9 @@ export default {
     },
     orderRoute() {
       return "/products/" + this.product.id + "/order";
+    },
+    editRoute() {
+      return "products/" + this.product.id;
     },
   },
 };

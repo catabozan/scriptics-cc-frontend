@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ProductsView from "../views/ProductsView.vue";
+import ProductsView from "../views/Product/ProductsView.vue";
 import RegisterView from "../views/Auth/RegisterView.vue";
 import LoginView from "../views/Auth/LoginView.vue";
 
@@ -31,6 +31,24 @@ const routes = [
     props: true,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/OrderProductView.vue"),
+  },
+  {
+    path: "/products/new",
+    name: "order-product",
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
+      ),
+  },
+  {
+    path: "/products/:productId",
+    name: "order-product",
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
+      ),
   },
 ];
 
