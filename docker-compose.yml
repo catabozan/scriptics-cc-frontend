@@ -2,6 +2,7 @@ version: '1'
 services:
   vue:
     build: .
+    # name of the image built using Dockerfile
     image: "scriptics-cc-frontend:latest"
     container_name: "scriptics-cc-frontend_container"
     ports:
