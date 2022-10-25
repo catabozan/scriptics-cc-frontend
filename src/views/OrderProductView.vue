@@ -8,6 +8,17 @@
       <el-form-item class="w-1/4" label="Phone Number">
         <el-input v-model="form.phone_number" />
       </el-form-item>
+      <p>
+        To complete the payment please send the required amount (${{
+          product.price / 100
+        }}) to the following bank account
+        <span class="font-bold text-green-700">RO75PORL2318667756591898</span>
+        <br />
+        <span
+          >Please include the Order number in the transfer details (ex: Order
+          #XXX)</span
+        >
+      </p>
       <button
         v-if="!orderPlaced"
         :disabled="product.stock === 0"
