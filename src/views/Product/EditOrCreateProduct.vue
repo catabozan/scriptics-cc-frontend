@@ -51,6 +51,7 @@ export default {
       .then((res) => {
         this.product = res.data.data;
         this.product.price = this.product.price / 100;
+        this.updateAction = true;
       });
   },
   data() {

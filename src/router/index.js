@@ -26,29 +26,26 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/OrdersView.vue"),
   },
   {
+    path: "/products/new",
+    name: "new-product",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
+      ),
+  },
+  {
+    path: "/products/:productId/edit",
+    name: "edit-product",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
+      ),
+  },
+  {
     path: "/products/:productId/order",
     name: "order-product",
-    props: true,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/OrderProductView.vue"),
-  },
-  {
-    path: "/products/new",
-    name: "order-product",
-    props: true,
-    component: () =>
-      import(
-        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
-      ),
-  },
-  {
-    path: "/products/:productId",
-    name: "order-product",
-    props: true,
-    component: () =>
-      import(
-        /* webpackChunkName: "about" */ "../views/Product/EditOrCreateProduct.vue"
-      ),
   },
 ];
 

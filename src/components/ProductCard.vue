@@ -18,7 +18,11 @@
         </template>
         <template v-else>
           <router-link :to="orderRoute">
-            <el-button v-if="orderAction" type="primary" class="button" text
+            <el-button
+              v-if="orderAction && product.stock !== 0"
+              type="primary"
+              class="button"
+              text
               >Order</el-button
             >
           </router-link>
@@ -60,7 +64,7 @@ export default {
       return "/products/" + this.product.id + "/order";
     },
     editRoute() {
-      return "products/" + this.product.id;
+      return "products/" + this.product.id + "/edit";
     },
   },
   methods: {

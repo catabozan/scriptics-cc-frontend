@@ -8,8 +8,13 @@
       <el-form-item class="w-1/4" label="Phone Number">
         <el-input v-model="form.phone_number" />
       </el-form-item>
-      <button v-if="!orderPlaced" type="submit" class="p-4 bg-cyan-100 rounded">
-        Place Order
+      <button
+        v-if="!orderPlaced"
+        :disabled="product.stock === 0"
+        type="submit"
+        class="p-4 bg-cyan-100 rounded"
+      >
+        {{ product.stock === 0 ? "Out of Stock!" : "Place Order" }}
       </button>
     </form>
     <h2 class="text-lg font-bold">{{ orderMessage }}</h2>
