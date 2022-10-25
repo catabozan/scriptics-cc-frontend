@@ -9,7 +9,10 @@
       <router-link v-if="currentPage > 1" :to="'?page=' + (currentPage - 1)">
         <el-button type="primary"> &lt; Previous Page</el-button>
       </router-link>
-      <router-link :to="'?page=' + (currentPage + 1)">
+      <router-link
+        :to="'?page=' + (currentPage + 1)"
+        v-if="products.length > 0"
+      >
         <el-button type="primary"> Next Page > </el-button>
       </router-link>
     </el-button-group>
@@ -27,8 +30,11 @@
       <router-link v-if="currentPage > 1" :to="'?page=' + (currentPage - 1)">
         <el-button type="primary"> &lt; Previous Page</el-button>
       </router-link>
-      <router-link :to="'?page=' + (currentPage + 1)">
-        <el-button type="primary"> Next Page > </el-button>
+      <router-link
+        :to="'?page=' + (currentPage + 1)"
+        v-if="products.length > 0"
+      >
+        <el-button type="primary"> Next Page ></el-button>
       </router-link>
     </el-button-group>
   </div>

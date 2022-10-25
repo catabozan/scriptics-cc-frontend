@@ -41,7 +41,7 @@ export default {
     ErrorList,
   },
   created() {
-    if (this.$route.params.productId === "new") {
+    if (!this.$route.params.productId) {
       this.updateAction = false;
       return;
     }

@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col m-auto p-12">
-    <ProductCard v-if="product" :product="product" :orderAction="false" />
     <form @submit.prevent="register">
       <el-form-item class="w-1/3" label="Name">
         <el-input v-model="form.name" />

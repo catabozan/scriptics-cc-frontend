@@ -8,7 +8,7 @@
       <el-form-item class="w-1/4" label="Phone Number">
         <el-input v-model="form.phone_number" />
       </el-form-item>
-      <p>
+      <p v-if="product">
         To complete the payment please send the required amount (${{
           product.price / 100
         }}) to the following bank account
@@ -20,7 +20,7 @@
         >
       </p>
       <button
-        v-if="!orderPlaced"
+        v-if="!orderPlaced && product"
         :disabled="product.stock === 0"
         type="submit"
         class="p-4 bg-cyan-100 rounded"

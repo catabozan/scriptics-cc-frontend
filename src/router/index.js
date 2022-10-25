@@ -23,7 +23,7 @@ const routes = [
     path: "/orders",
     name: "orders",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/OrdersView.vue"),
+      import(/* webpackChunkName: "about" */ "../views/Order/OrdersView.vue"),
   },
   {
     path: "/products/new",
@@ -45,7 +45,9 @@ const routes = [
     path: "/products/:productId/order",
     name: "order-product",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/OrderProductView.vue"),
+      import(
+        /* webpackChunkName: "about" */ "../views/Order/CreateOrderView.vue"
+      ),
   },
 ];
 
