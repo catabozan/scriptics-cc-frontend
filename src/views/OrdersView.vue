@@ -18,6 +18,9 @@
         </div>
       </template>
       <div>
+        <p class="block text-gray-500">
+          {{ order.user?.name ?? "~Anonymous Order" }}
+        </p>
         <p class="block">Shipping to: {{ order.address }}</p>
         <span class="text-cyan-900">Phone: {{ order.phone_number }} </span>
       </div>
